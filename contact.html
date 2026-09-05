@@ -42,23 +42,6 @@
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <!-- topbar -->
-     <div class="topbar">
-        <div class="container topbar-inner">
-            <address class="topbar-info">
-                <span><i class="bi bi-telephone"></i> +90 551 028 5589</span>
-                <span><i class="bi bi-envelope"></i> destek@travel.com</span> 
-            </address>
-
-            <div class="topbar-social" aria-label="Sosyal Medya">
-                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
-                <a href="#" aria-label="Youtube"><i class="bi bi-youtube"></i></a>
-            </div>
-        </div>
-     </div>
-
     <!-- header & navigation bar -->
     <header class="site-header">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -91,6 +74,7 @@
     </header>
 
     <!-- iletişim -->
+    <main>
     <section class="contact-hero">
         <div class="container">
             <h1 class="contact-hero__title">İletişim</h1>
@@ -99,6 +83,8 @@
             <div class="row justify-content-center mt-2">
                 <div class="col-md-7">
                     <form class="contact-form" action="https://formspree.io/f/mljelkkd" method="POST">
+                        <input type="hidden" name="_next" value="contact.html?gonderildi=true">
+
                         <div class="mb-3">
                             <label for="contact-name" class="form-label">Ad Soyad</label>
                             <input type="text" id="contact-name" name="name" class="form-control" placeholder="Adınız Soyadınız" required>
@@ -138,6 +124,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- footer -->
      <footer>
