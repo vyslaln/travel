@@ -46,13 +46,15 @@
 }
 
 /* dropdown */
-#navbarNavDropDown{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(calc(-50% - 15px), -50%);   
-    display: flex;
-    align-items: center;
+@media (min-width: 992px){
+    #navbarNavDropDown{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(calc(-50% - 15px), -50%);   
+        display: flex;
+        align-items: center;
+    }
 }
 
 /* destination card */ 
