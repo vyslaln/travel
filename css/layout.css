@@ -1,0 +1,66 @@
+/* topbar */
+.topbar{
+    background-color:var(--color-bg-dark);
+    color:  var(--color-text-light);
+    font-size: 0.9rem;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.topbar-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    min-height:28px;
+}
+
+.topbar-info{
+    display:flex;
+    gap:15px;
+    line-height:1;
+}
+
+.topbar-info span{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    height:20px;
+    line-height:1;
+}
+
+.topbar-social{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    line-height:1;
+}
+
+.topbar-social a{
+    display:flex;
+    align-items:center;
+    font-size: 0.9rem;
+    height:20px;
+    line-height:1;
+}
+
+/* header */
+.site-header{
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color var(--transition-fast);
+}
+
+.site-header .container-fluid{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:3px 0;
+}
+
+.site-header nav.navbar{
+    position: relative;
+}
+
