@@ -6,6 +6,7 @@
     --color-border: #333333;
     --color-border-light: #eeeeee;
     --color-hover-bg: #f8f9fa;
+    --card-footer-bg:#F3EFE4;
 
     --bg-main: #ffffff;
     --card-bg: #ffffff;
@@ -67,5 +68,31 @@ button{
     border: none;
     background: none;
     font-family: inherit;
+}
+
+/* testimonials card */ 
+.testimonials .card{
+    border: none;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);;
+}
+
+.testimonials .card-text{
+    font-style: italic;
+}
+
+.testimonials img{
+    width: 50px;
+    height: 50px;
+}
+
+/* footer */ 
+footer{
+    background-color: #343a40;
+    color: #fff;
+    padding: 3rem 0;
+}
+
+.social-icons a{
+    font-size: 1.25rem;
 }
 
