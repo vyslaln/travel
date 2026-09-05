@@ -135,3 +135,34 @@
     margin-bottom: 4px;
     font-weight: 600;
 }
+
+/* about */
+.about-hero{
+    padding: 60px 0;
+}
+
+.about-hero__eyebrow{
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+
+.about-hero__title{
+    font-family: var(--font-brand);
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.about-hero__text{
+    color: var(--color-text-muted);
+    line-height: 2;
+}
+
+.about-hero__img{
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
