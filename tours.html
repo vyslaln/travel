@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <!-- Meta Tags and SEO -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO -->
+    <meta name="description" content="Nomadica'nın özenle hazırlanmış tur rotalarını keşfedin — bölge, zorluk seviyesi ve süreye göre filtreleyerek size en uygun macerayı bulun.">
+    <meta name="keywords" content="turlar, seyahat rotaları, tur paketleri, macera turları, seyahat planlayıcı">
+    <meta name="author" content="Nomadica">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Turlar | Nomadica">
+    <meta property="og:description" content="Nomadica'nın özenle hazırlanmış tur rotalarını keşfedin — bölge, zorluk seviyesi ve süreye göre filtreleyerek size en uygun macerayı bulun.">
+    <meta property="og:type" content="website">
+
+    <!-- Title -->
+    <title> Turlar | Nomadica </title>
+
+    <!-- Website Icon -->
+    <link rel="icon" href="images/nomadica-icon.png" type="image/png">
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+    <!-- Bootstrap Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Bootstrap JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Google Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Rubik:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- External CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+<body>
+    <!-- topbar -->
+     <div class="topbar">
+        <div class="container topbar-inner">
+            <address class="topbar-info">
+                <span><i class="bi bi-telephone"></i> +90 551 028 5589</span>
+                <span><i class="bi bi-envelope"></i> destek@travel.com</span> 
+            </address>
+
+            <div class="topbar-social" aria-label="Sosyal Medya">
+                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+                <a href="#" aria-label="Youtube"><i class="bi bi-youtube"></i></a>
+            </div>
+        </div>
+     </div>
+
+    <!-- header & navigation bar -->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="images/logo.png" alt="Nomadica Logo" width="250" height="100">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropDown" aria-controls="navbarNavDropDown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarNavDropDown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#"> Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tours.html"> Turlar </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html"> Hakkımızda </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html"> İletişim </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+     <!-- hero  -->
+     <section class="destinations">
+        <div class="container">
+
+            <!-- filter bar -->
+             <div class="filter-bar">
+                <div class="filter-field">
+                    <label for="filter-region">Bölge</label>
+                    <select id="filter-region" class="form-select">
+                        <option value="all">Tümü</option>
+                        <option value="avrupa">Avrupa</option>
+                        <option value="iskandinav">İskandinav Ülkeleri</option>
+                        <option value="asya">Asya</option>
+                        <option value="afrika">Afrika</option>
+                        <option value="amerika">Amerika</option>
+                    </select>
+                </div>
+
+                <div class="filter-field">
+                    <label for="filter-difficulty">Zorluk</label>
+                    <select class="form-select" id="filter-difficulty">
+                        <option value="all">Tümü</option>
+                        <option value="kolay">Kolay</option>
+                        <option value="orta">Orta</option>
+                        <option value="zor">Zor</option>
+                    </select>
+                </div>
+
+                <div class="filter-field">
+                    <label for="filter-days">Süre</label>
+                    <select class="form-select" id="filter-days">
+                        <option value="all">Tümü</option>
+                        <option value="short">1-5 Gün</option>
+                        <option value="medium">6-10 Gün</option>
+                        <option value="long">+11 Gün</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="destination-card" data-region="avrupa" data-difficulty="zor" data-days="7">
+                        <div class="destination-card__img">
+                            <img src="https://images.unsplash.com/photo-1613713569041-60a40cf006d0?auto=format&fit=crop&w=800&q=80" alt="Kaçkar Geçidi">
+                            <span class="destination-card__badge">TR · 04</span>
+                        </div>
+                        <div class="destination-card__info">
+                            <h3>Kaçkar Geçidi</h3>
+                            <p>7 gün · Zorlu</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="destination-card" data-region="amerika" data-difficulty="zor" data-days="12">
+                        <div class="destination-card__img">
+                            <img src="https://images.unsplash.com/photo-1616799268833-6425aa9ea399?auto=format&fit=crop&w=800&q=80" alt="And Yaylaları">
+                            <span class="destination-card__badge">PE · 11</span>
+                        </div>
+                        <div class="destination-card__info">
+                            <h3>And Yaylaları</h3>
+                            <p>12 gün · Zorlu</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="destination-card" data-region="avrupa" data-difficulty="kolay" data-days="3">
+                        <div class="destination-card__img">
+                            <img src="https://images.unsplash.com/photo-1695589593603-129adfecac13?auto=format&fit=crop&w=800&q=80" alt="Pamukkale Terasları">
+                            <span class="destination-card__badge">TR · 06</span>
+                        </div>
+                        <div class="destination-card__info">
+                            <h3>Pamukkale Travertenleri</h3>
+                            <p>3 gün · Kolay</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="destination-card" data-region="iskandinav" data-difficulty="orta" data-days="10">
+                        <div class="destination-card__img">
+                            <img src="https://images.unsplash.com/photo-1661345441183-d3d10b1f4e97?auto=format&fit=crop&w=800&q=80" alt="Norveç Fiyortları">
+                            <span class="destination-card__badge">NO · 08</span>
+                        </div>
+                        <div class="destination-card__info">
+                            <h3>Norveç Fiyortları</h3>
+                            <p>10 gün · Orta</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="destination-card" data-region="amerika" data-difficulty="zor" data-days="5">
+                        <div class="destination-card__img">
+                            <img src="https://images.unsplash.com/photo-1529476488885-3159d45ab78b?auto=format&fit=crop&w=800&q=80" alt="İnka Yolu">
+                            <span class="destination-card__badge">PE · 13</span>
+                        </div>
+                        <div class="destination-card__info">
+                            <h3>İnka Yolu</h3>
+                            <p>5 gün · Zorlu</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="destination-card" data-region="afrika" data-difficulty="orta" data-days="6">
+                        <div class="destination-card__img">
+                            <img src="https://images.unsplash.com/photo-1695787841714-bc5acb2b23c5?auto=format&fit=crop&w=800&q=80" alt="Serengeti Safarisi">
+                            <span class="destination-card__badge">TZ · 15</span>
+                        </div>
+                        <div class="destination-card__info">
+                            <h3>Serengeti Safarisi</h3>
+                            <p>6 gün · Orta</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="destination-card" data-region="afrika" data-difficulty="zor" data-days="9">
+                        <div class="destination-card__img">
+                            <img src="https://images.unsplash.com/photo-1535038743996-5cc170e89591?auto=format&fit=crop&w=800&q=80" alt="Sahra Rotası">
+                            <span class="destination-card__badge">MA · 09</span>
+                        </div>
+                        <div class="destination-card__info">
+                            <h3>Sahra Rotası</h3>
+                            <p>9 gün · Zor</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="destination-card" data-region="iskandinav" data-difficulty="kolay" data-days="5">
+                        <div class="destination-card__img">
+                            <img src="https://images.unsplash.com/photo-1740166260052-b41e5381bcbb?auto=format&fit=crop&w=800&q=80" alt="Kuzey Ormanları">
+                            <span class="destination-card__badge">DK · 05</span>
+                        </div>
+                        <div class="destination-card__info">
+                            <h3>Kuzey Ormanları</h3>
+                            <p>5 gün · Kolay</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="destination-card" data-region="asya" data-difficulty="orta" data-days="8">
+                        <div class="destination-card__img">
+                            <img src="https://images.unsplash.com/photo-1571269414792-457c81cf7855?auto=format&fit=crop&w=800&q=80" alt="Ha Long Körfezi">
+                            <span class="destination-card__badge">VN · 08</span>
+                        </div>
+                        <div class="destination-card__info">
+                            <h3>Ha Long Körfezi</h3>
+                            <p>8 gün · Orta</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="destination-card" data-region="asya" data-difficulty="kolay" data-days="4">
+                        <div class="destination-card__img">
+                            <img src="https://images.unsplash.com/photo-1596340314589-bbc7f26a2d61?auto=format&fit=crop&w=800&q=80" alt="Kyoto Bambu Ormanı">
+                            <span class="destination-card__badge">JP · 04</span>                            
+                        </div>
+                        <div class="destination-card__info">
+                            <h3>Kyoto Bambu Ormanı</h3>
+                            <p>4 gün · Kolay</p>
+                        </div>
+                    </div>
+                    </div>
+                    
+                <div class="col-md-4">
+                    <div class="destination-card" data-region="amerika" data-difficulty="zor" data-days="14">
+                        <div class="destination-card__img">
+                            <img src="https://images.unsplash.com/photo-1672713543300-437d12564280?auto=format&fit=crop&w=800&q=80" alt="Patagonya Yürüyüşü">
+                            <span class="destination-card__badge">CL · 14</span>
+                        </div>
+                        <div class="destination-card__info">
+                            <h3>Patagonya Yürüyüşü</h3>
+                            <p>14 gün · Zor</p>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+        </div>
+     </section>
+
+      <!-- footer -->
+     <footer>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4 mb-3">
+                    <h5>Hakkımızda</h5>
+                    <p>Nomadica, 2020'den bu yana gezginlere özgün rotalar ve unutulmaz deneyimler sunan bir seyahat platformudur — dünyanın dört bir yanındaki keşfe, güvenilir rehberlik ve özenle planlanmış turlarla eşlik ediyoruz.</p>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <h5>Siteyi İncelemeye Devam Edin</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-decoration-none">Ana Sayfa</a></li>
+                        <li><a href="tours.html" class="text-decoration-none">Turlar</a></li>
+                        <li><a href="contact.html" class="text-decoration-none">İletişim</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <h5>Bizi Takip Edin!</h5>
+                    <ul class="list-inline social-icons">
+                        <li class="list-inline-item"><a href="#" aria-label="Instagram" class="text-white"><i class="bi bi-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="#" aria-label="Facebook" class="text-white"><i class="bi bi-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="#" aria-label="Pinterest" class="text-white"><i class="bi bi-pinterest"></i></a></li>
+                        <li class="list-inline-item"><a href="#" aria-label="Youtube" class="text-white"><i class="bi bi-youtube"></i></a></li>
+                    </ul>
+                </div>
+
+                <hr class="mb-4">
+
+                <div class="container">
+                    <p>&copy;2020 Nomadica. Tüm Hakları Saklıdır.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="javascript/turlar.js"></script>
+
+</body>
+</html>
