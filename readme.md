@@ -55,6 +55,8 @@ Nomadica, HTML, CSS (Bootstrap 5) ve vanilla JavaScript ile geliştirilmiş bir 
 
 [Watch the demo video](assets/travel.mp4)
 
+[Watch the demo video](assets/travel-tanitim.mp4)
+
 ## Contact form
 
 ![Contact form](assets/mail.png)
@@ -97,4 +99,8 @@ Nomadica, HTML, CSS (Bootstrap 5) ve vanilla JavaScript ile geliştirilmiş bir 
     ├── index.html
     ├── readme.md
     └── tours.html
+
+
+
     
+
