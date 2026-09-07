@@ -31,7 +31,7 @@ Nomadica, HTML, CSS (Bootstrap 5) ve vanilla JavaScript ile geliştirilmiş bir 
 
     travel/
     ├── assets/
-    │   ├── travel-tanitim.mp4
+    │   ├── travel.mp4
     │   └── mail.png
     ├── css/
     │   ├── components.css
@@ -80,7 +80,7 @@ Nomadica, HTML, CSS (Bootstrap 5) ve vanilla JavaScript ile geliştirilmiş bir 
 
     travel/
     ├── assets/
-    │   ├── travel-tanitim.mp4
+    │   ├── travel.mp4
     │   └── mail.png
     ├── css/
     │   ├── components.css
@@ -96,5 +96,5 @@ Nomadica, HTML, CSS (Bootstrap 5) ve vanilla JavaScript ile geliştirilmiş bir 
     ├── contact.html
     ├── index.html
     ├── readme.md
-    └── tours.htm
+    └── tours.html
     
