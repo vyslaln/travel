@@ -1,0 +1,41 @@
+@media (max-width: 767px) {
+
+    /* logo, mobilde kenara çok yapışık durmasın */
+    .navbar-brand{
+        margin-left: 8px;
+    }
+
+    /* destinations section - dar ekranda boşluk azalsın */
+    .destinations{
+        padding: 32px 0;
+    }
+
+    /* filter bar - dropdown'lar tam genişlik alıp alt alta dizilsin */
+    .filter-bar{
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .filter-field{
+        min-width: 100%;
+    }
+
+    /* about hero - başlık boyutu küçük ekranda fazla büyük durmasın */
+    .about-hero__title{
+        font-size: 1.5rem;
+    }
+
+    .about-hero{
+        padding: 32px 0;
+    }
+
+    /* contact hero - aynı mantık */
+    .contact-hero__title{
+        font-size: 1.5rem;
+    }
+
+    .contact-hero{
+        padding: 32px 0;
+    }
+}

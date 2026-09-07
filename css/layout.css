@@ -1,0 +1,30 @@
+/* header */
+.site-header{
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color var(--transition-fast);
+}
+
+.site-header .container-fluid{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:3px 0;
+}
+
+.site-header nav.navbar{
+    position: relative;
+}
+
+/* search bar */
+.travel-search{
+    margin-top: 40px;
+}
+
+/* destinations */
+.destinations{
+    padding: 60px 0;
+}

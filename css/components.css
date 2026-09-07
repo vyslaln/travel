@@ -1,0 +1,199 @@
+/* logo */
+.navbar-brand{
+    font-family: var(--font-brand);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color:var(--color-text-dark);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left:15px;
+}
+
+/* menu & hover */
+.navbar-nav{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.nav-link{
+    font-weight: 650;
+    font-size: 1rem;
+    color:var(--color-text-dark);
+    position: relative;
+    padding: 5px 0;
+    white-space: nowrap;
+}
+
+.nav-link:hover{
+    color:var(--color-text-dark);
+}
+
+.nav-link::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-text-dark);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after{
+    width: 100%;
+}
+
+/* dropdown */
+@media (min-width: 992px){
+    #navbarNavDropDown{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(calc(-50% - 15px), -50%);   
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* destination card */ 
+.destination-card{
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--bg-main);
+    transition: transform var(--transition-fast);
+}
+
+.destination-card:hover{
+    transform: translateY(-4px);
+}
+
+.destination-card__img{
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+}
+
+.destination-card__img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.destination-card__badge{
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background-color: var(--bg-main);
+    color: var(--color-text-dark);
+    font-family: var(--font-primary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+}
+
+.destination-card__info{
+    background-color: var(--card-footer-bg);
+    padding: 20px;
+}
+
+.destination-card__info h3{
+    font-family: var(--font-brand);
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+    color: var(--color-text-dark);
+}
+
+.destination-card__info p{
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.5px;
+}
+
+/* filter bar */ 
+.filter-bar{
+    display: flex;
+    gap: 24px;
+    padding: 20px;
+    margin-bottom: 32px;
+    background-color: var(--card-footer-bg);
+    border-radius: 10px;
+    flex-wrap: wrap
+}
+
+.filter-field{
+    display: flex;
+    flex-direction: column;
+    min-width: 160px;
+}
+
+.filter-field label{
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+/* about */
+.about-hero{
+    padding: 60px 0;
+}
+
+.about-hero__eyebrow{
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+
+.about-hero__title{
+    font-family: var(--font-brand);
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.about-hero__text{
+    color: var(--color-text-muted);
+    line-height: 2;
+}
+
+.about-hero__img{
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* contact */
+.contact-hero{
+    padding: 60px 0;
+}
+
+.contact-hero__title{
+    font-family: var(--font-brand);
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.contact-hero__text{
+    text-align: center;
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+}
+
+.contact-form label{
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+
+.contact-form .btn-primary{
+    width: 100%;
+    padding: 10px 0;
+}
