@@ -19,9 +19,22 @@
     position: relative;
 }
 
-/* search bar */
-.travel-search{
-    margin-top: 40px;
+/* arama çubuğu bölümü, fon fotoğrafı ile */
+.search-hero{
+    position: relative;
+    height: 480px;
+    background-image: url("https://images.unsplash.com/photo-1499678329028-101435549a4e?auto=format&fit=crop&w=1600&q=80");
+    background-size: cover;
+    background-position: center;
+}
+
+/* fotoğrafın üzerine hafif karartma, kartı dikeyde ortalıyoruz */
+.search-hero__overlay{
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
 }
 
 /* destinations */

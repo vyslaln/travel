@@ -80,31 +80,66 @@
             <!-- Fotoğrafın üzerine hafif karartma koyup, kartı ortalıyoruz -->
             <div class="search-hero__overlay">
                 <div class="container">
-                    <div class="travel-search-card">
-                        <div class="row g-3">
+                    <!-- Artık gerçek bir form, Formspree'ye POST atacak -->
+                    <form class="travel-search-card" id="searchForm" action="https://formspree.io/f/mljelkkd" method="POST">
 
-                            <!-- Nereden alanı -->
+                        <!-- Formspree gönderim sonrası bizi buraya geri yönlendirsin -->
+                        <input type="hidden" name="_next" value="tours.html?arama=tamam">
+                        <!-- Mailde bu formun iletişim formundan ayırt edilmesi için -->
+                        <input type="hidden" name="form_turu" value="Arama Formu">
+
+                        <!-- align-items-end eklendi, farklı yükseklikteki alanlar/buton alt hizada dursun diye -->
+                        <div class="row g-3 align-items-end">
+
+                            <!-- Nereden alanı, artık serbest metin değil, havalimanı seçimi -->
                             <div class="col-md-6">
-                                <label>Nereden</label>
-                                <input type="text" id="searchFrom" class="form-control" placeholder="Şehir, Bölge veya Havalimanı">
+                                <label for="searchFrom">Nereden</label>
+                                <select id="searchFrom" name="nereden" class="form-select" required>
+                                    <option value="">Seçiniz</option>
+                                    <option value="IST - İstanbul">İstanbul (IST)</option>
+                                    <option value="RZV - Rize-Artvin">Rize-Artvin (RZV)</option>
+                                    <option value="DNZ - Denizli">Denizli Çardak (DNZ)</option>
+                                    <option value="CUZ - Cusco">Cusco (CUZ)</option>
+                                    <option value="OSL - Oslo">Oslo (OSL)</option>
+                                    <option value="JRO - Kilimanjaro">Kilimanjaro (JRO)</option>
+                                    <option value="RAK - Marakeş">Marakeş (RAK)</option>
+                                    <option value="CPH - Kopenhag">Kopenhag (CPH)</option>
+                                    <option value="HAN - Hanoi">Hanoi (HAN)</option>
+                                    <option value="KIX - Osaka">Osaka Kansai (KIX)</option>
+                                    <option value="SCL - Santiago">Santiago (SCL)</option>
+                                </select>
                             </div>
 
-                            <!-- Nereye alanı -->
+                            <!-- Nereye alanı, artık serbest metin değil, havalimanı seçimi -->
                             <div class="col-md-6">
-                                <label>Nereye</label>
-                                <input type="text" id="searchTo" class="form-control" placeholder="Şehir, Bölge veya Havalimanı">
+                                <label for="searchTo">Nereye</label>
+                                <select id="searchTo" name="nereye" class="form-select" required>
+                                    <option value="">Seçiniz</option>
+                                    <option value="IST - İstanbul">İstanbul (IST)</option>
+                                    <option value="RZV - Rize-Artvin">Rize-Artvin (RZV)</option>
+                                    <option value="DNZ - Denizli">Denizli Çardak (DNZ)</option>
+                                    <option value="CUZ - Cusco">Cusco (CUZ)</option>
+                                    <option value="OSL - Oslo">Oslo (OSL)</option>
+                                    <option value="JRO - Kilimanjaro">Kilimanjaro (JRO)</option>
+                                    <option value="RAK - Marakeş">Marakeş (RAK)</option>
+                                    <option value="CPH - Kopenhag">Kopenhag (CPH)</option>
+                                    <option value="HAN - Hanoi">Hanoi (HAN)</option>
+                                    <option value="KIX - Osaka">Osaka Kansai (KIX)</option>
+                                    <option value="SCL - Santiago">Santiago (SCL)</option>
+                                </select>
                             </div>
 
                             <!-- Yolcu alanı, tıklanınca altında bir panel açılacak -->
                             <div class="col-md-3 passenger-wrapper">
                                 <label>Yolcu</label>
-                                <!-- Kullanıcı buraya tıklayınca panel açılıp kapanacak -->
                                 <div id="passengerDisplay" class="form-control passenger-display">1 Yetişkin, 0 Çocuk, 1 Oda</div>
+
+                                <!-- Bu gizli alan, yolcu bilgisini Formspree'ye metin olarak gönderiyor -->
+                                <input type="hidden" id="passengerHidden" name="yolcu">
 
                                 <!-- Yolcu seçim paneli, başta gizli, JS ile açılacak -->
                                 <div id="passengerPanel" class="passenger-panel">
 
-                                    <!-- Yetişkin sayacı -->
                                     <div class="passenger-row">
                                         <span>Yetişkin</span>
                                         <div class="passenger-counter">
@@ -114,7 +149,6 @@
                                         </div>
                                     </div>
 
-                                    <!-- Çocuk sayacı -->
                                     <div class="passenger-row">
                                         <span>Çocuk</span>
                                         <div class="passenger-counter">
@@ -124,7 +158,6 @@
                                         </div>
                                     </div>
 
-                                    <!-- Oda sayacı -->
                                     <div class="passenger-row">
                                         <span>Oda</span>
                                         <div class="passenger-counter">
@@ -134,30 +167,30 @@
                                         </div>
                                     </div>
 
-                                    <!-- Paneli kapatmak için buton -->
+                                    <!-- type="button" olması şart, yoksa yanlışlıkla formu gönderir -->
                                     <button type="button" id="passengerOkBtn" class="passenger-ok-btn">Tamam</button>
                                 </div>
                             </div>
 
                             <!-- Gidiş tarihi -->
                             <div class="col-md-3">
-                                <label>Gidiş</label>
-                                <input type="date" id="searchDepart" class="form-control">
+                                <label for="searchDepart">Gidiş</label>
+                                <input type="date" id="searchDepart" name="gidis" class="form-control" required>
                             </div>
 
                             <!-- Dönüş tarihi -->
                             <div class="col-md-3">
-                                <label>Dönüş</label>
-                                <input type="date" id="searchReturn" class="form-control">
+                                <label for="searchReturn">Dönüş</label>
+                                <input type="date" id="searchReturn" name="donus" class="form-control">
                             </div>
 
-                            <!-- Ara butonu -->
+                            <!-- Ara butonu, artık type="submit" - forma bağlı -->
                             <div class="col-md-3">
-                                <button type="button" id="searchBtn" class="btn btn-search w-100">ARA</button>
+                                <button type="submit" id="searchBtn" class="btn btn-search w-100">ARA</button>
                             </div>
 
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </section>

@@ -14,7 +14,8 @@
     --border-color: var(--color-border-light);
     --hover-bg: var(--color-hover-bg);
 
-    --font-primary: 'Oswald', sans-serif;
+    /* Font değişikliği: Oswald yerine Nunito Sans kullanıyoruz, çünkü Oswald dar ve dik bir font olduğu için uzun metinlerde gergin/sıkışık bir his veriyormuş, kullanıcı geri bildirimi üzerine daha ferah ve yuvarlak hatlı bir fontla değiştirdik. */
+    --font-primary: 'Nunito Sans', sans-serif;
     --font-brand: 'Rubik', sans-serif;
 
     --transition-fast: 0.2s ease;

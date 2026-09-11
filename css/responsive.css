@@ -5,6 +5,15 @@
         margin-left: 8px;
     }
 
+    /* arama çubuğu - mobilde daha yüksek fon, kart daha dar */
+    .search-hero{
+        height: 720px;
+    }
+
+    .travel-search-card{
+        padding: 20px 22px;
+    }
+
     /* destinations section - dar ekranda boşluk azalsın */
     .destinations{
         padding: 32px 0;

@@ -30,10 +30,10 @@
     <!-- Bootstrap JS Bundle CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Google Fonts  -->
+    <!-- Google Fonts - Nunito Sans eklendi, Oswald yerine kullanılıyor (daha ferah, yuvarlak bir font) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Rubik:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Rubik:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- External CSS Files -->
     <link rel="stylesheet" href="css/style.css">
@@ -72,92 +72,213 @@
             </div>
         </nav>
     </header>
-     
-      <!-- hero  -->
-       <main>
-     <section class="destinations">
-        <div class="container">
-            <div class="row g-4">
 
-                <div class="col-md-4">
-                    <div class="destination-card">
-                        <div class="destination-card__img">
-                            <img src="https://images.unsplash.com/photo-1613713569041-60a40cf006d0?auto=format&fit=crop&w=800&q=80" alt="Kaçkar Geçidi">
-                            <span class="destination-card__badge">TR · 04</span>
+    <main>
+
+        <!-- Arama çubuğu bölümü, fon fotoğrafı üzerine gradient kart olarak oturuyor -->
+        <section class="search-hero">
+            <!-- Fotoğrafın üzerine hafif karartma koyup, kartı ortalıyoruz -->
+            <div class="search-hero__overlay">
+                <div class="container">
+                    <!-- Artık gerçek bir form, Formspree'ye POST atacak -->
+                    <form class="travel-search-card" id="searchForm" action="https://formspree.io/f/mljelkkd" method="POST">
+
+                        <!-- Formspree gönderim sonrası bizi buraya geri yönlendirsin -->
+                        <input type="hidden" name="_next" value="index.html?arama=tamam">
+                        <!-- Mailde bu formun iletişim formundan ayırt edilmesi için -->
+                        <input type="hidden" name="form_turu" value="Arama Formu">
+
+                        <!-- align-items-end eklendi, farklı yükseklikteki alanlar/buton alt hizada dursun diye -->
+                        <div class="row g-3 align-items-end">
+
+                            <!-- Nereden alanı, artık serbest metin değil, havalimanı seçimi -->
+                            <div class="col-md-6">
+                                <label for="searchFrom">Nereden</label>
+                                <select id="searchFrom" name="nereden" class="form-select" required>
+                                    <option value="">Seçiniz</option>
+                                    <option value="IST - İstanbul">İstanbul (IST)</option>
+                                    <option value="RZV - Rize-Artvin">Rize-Artvin (RZV)</option>
+                                    <option value="DNZ - Denizli">Denizli Çardak (DNZ)</option>
+                                    <option value="CUZ - Cusco">Cusco (CUZ)</option>
+                                    <option value="OSL - Oslo">Oslo (OSL)</option>
+                                    <option value="JRO - Kilimanjaro">Kilimanjaro (JRO)</option>
+                                    <option value="RAK - Marakeş">Marakeş (RAK)</option>
+                                    <option value="CPH - Kopenhag">Kopenhag (CPH)</option>
+                                    <option value="HAN - Hanoi">Hanoi (HAN)</option>
+                                    <option value="KIX - Osaka">Osaka Kansai (KIX)</option>
+                                    <option value="SCL - Santiago">Santiago (SCL)</option>
+                                </select>
+                            </div>
+
+                            <!-- Nereye alanı, artık serbest metin değil, havalimanı seçimi -->
+                            <div class="col-md-6">
+                                <label for="searchTo">Nereye</label>
+                                <select id="searchTo" name="nereye" class="form-select" required>
+                                    <option value="">Seçiniz</option>
+                                    <option value="IST - İstanbul">İstanbul (IST)</option>
+                                    <option value="RZV - Rize-Artvin">Rize-Artvin (RZV)</option>
+                                    <option value="DNZ - Denizli">Denizli Çardak (DNZ)</option>
+                                    <option value="CUZ - Cusco">Cusco (CUZ)</option>
+                                    <option value="OSL - Oslo">Oslo (OSL)</option>
+                                    <option value="JRO - Kilimanjaro">Kilimanjaro (JRO)</option>
+                                    <option value="RAK - Marakeş">Marakeş (RAK)</option>
+                                    <option value="CPH - Kopenhag">Kopenhag (CPH)</option>
+                                    <option value="HAN - Hanoi">Hanoi (HAN)</option>
+                                    <option value="KIX - Osaka">Osaka Kansai (KIX)</option>
+                                    <option value="SCL - Santiago">Santiago (SCL)</option>
+                                </select>
+                            </div>
+
+                            <!-- Yolcu alanı, tıklanınca altında bir panel açılacak -->
+                            <div class="col-md-3 passenger-wrapper">
+                                <label>Yolcu</label>
+                                <div id="passengerDisplay" class="form-control passenger-display">1 Yetişkin, 0 Çocuk, 1 Oda</div>
+
+                                <!-- Bu gizli alan, yolcu bilgisini Formspree'ye metin olarak gönderiyor -->
+                                <input type="hidden" id="passengerHidden" name="yolcu">
+
+                                <!-- Yolcu seçim paneli, başta gizli, JS ile açılacak -->
+                                <div id="passengerPanel" class="passenger-panel">
+
+                                    <div class="passenger-row">
+                                        <span>Yetişkin</span>
+                                        <div class="passenger-counter">
+                                            <button type="button" id="adultMinusBtn">-</button>
+                                            <span id="adultCountText">1</span>
+                                            <button type="button" id="adultPlusBtn">+</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="passenger-row">
+                                        <span>Çocuk</span>
+                                        <div class="passenger-counter">
+                                            <button type="button" id="childMinusBtn">-</button>
+                                            <span id="childCountText">0</span>
+                                            <button type="button" id="childPlusBtn">+</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="passenger-row">
+                                        <span>Oda</span>
+                                        <div class="passenger-counter">
+                                            <button type="button" id="roomMinusBtn">-</button>
+                                            <span id="roomCountText">1</span>
+                                            <button type="button" id="roomPlusBtn">+</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- type="button" olması şart, yoksa yanlışlıkla formu gönderir -->
+                                    <button type="button" id="passengerOkBtn" class="passenger-ok-btn">Tamam</button>
+                                </div>
+                            </div>
+
+                            <!-- Gidiş tarihi -->
+                            <div class="col-md-3">
+                                <label for="searchDepart">Gidiş</label>
+                                <input type="date" id="searchDepart" name="gidis" class="form-control" required>
+                            </div>
+
+                            <!-- Dönüş tarihi -->
+                            <div class="col-md-3">
+                                <label for="searchReturn">Dönüş</label>
+                                <input type="date" id="searchReturn" name="donus" class="form-control">
+                            </div>
+
+                            <!-- Ara butonu, artık type="submit" - forma bağlı -->
+                            <div class="col-md-3">
+                                <button type="submit" id="searchBtn" class="btn btn-search w-100">ARA</button>
+                            </div>
+
                         </div>
-                        <div class="destination-card__info">
-                            <h3>Kaçkar Geçidi</h3>
-                            <p>7 gün · Zorlu</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- hero  -->
+        <section class="destinations">
+            <div class="container">
+                <div class="row g-4">
+
+                    <div class="col-md-4">
+                        <div class="destination-card">
+                            <div class="destination-card__img">
+                                <img src="https://images.unsplash.com/photo-1613713569041-60a40cf006d0?auto=format&fit=crop&w=800&q=80" alt="Kaçkar Geçidi">
+                                <span class="destination-card__badge">TR · 04</span>
+                            </div>
+                            <div class="destination-card__info">
+                                <h3>Kaçkar Geçidi</h3>
+                                <p>7 gün · Zorlu</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="destination-card">
-                        <div class="destination-card__img">
-                            <img src="https://images.unsplash.com/photo-1616799268833-6425aa9ea399?auto=format&fit=crop&w=800&q=80" alt="And Yaylaları">
-                            <span class="destination-card__badge">PE · 11</span>
-                        </div>
-                        <div class="destination-card__info">
-                            <h3>And Yaylaları</h3>
-                            <p>12 gün · Zorlu</p>
+                    <div class="col-md-4">
+                        <div class="destination-card">
+                            <div class="destination-card__img">
+                                <img src="https://images.unsplash.com/photo-1616799268833-6425aa9ea399?auto=format&fit=crop&w=800&q=80" alt="And Yaylaları">
+                                <span class="destination-card__badge">PE · 11</span>
+                            </div>
+                            <div class="destination-card__info">
+                                <h3>And Yaylaları</h3>
+                                <p>12 gün · Zorlu</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="destination-card">
-                        <div class="destination-card__img">
-                            <img src="https://images.unsplash.com/photo-1695589593603-129adfecac13?auto=format&fit=crop&w=800&q=80" alt="Pamukkale Terasları">
-                            <span class="destination-card__badge">TR · 06</span>
-                        </div>
-                        <div class="destination-card__info">
-                            <h3>Pamukkale Travertenleri</h3>
-                            <p>3 gün · Kolay</p>
+                    <div class="col-md-4">
+                        <div class="destination-card">
+                            <div class="destination-card__img">
+                                <img src="https://images.unsplash.com/photo-1695589593603-129adfecac13?auto=format&fit=crop&w=800&q=80" alt="Pamukkale Terasları">
+                                <span class="destination-card__badge">TR · 06</span>
+                            </div>
+                            <div class="destination-card__info">
+                                <h3>Pamukkale Travertenleri</h3>
+                                <p>3 gün · Kolay</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="destination-card">
-                        <div class="destination-card__img">
-                            <img src="https://images.unsplash.com/photo-1661345441183-d3d10b1f4e97?auto=format&fit=crop&w=800&q=80" alt="Norveç Fiyortları">
-                            <span class="destination-card__badge">NO · 08</span>
-                        </div>
-                        <div class="destination-card__info">
-                            <h3>Norveç Fiyortları</h3>
-                            <p>10 gün · Orta</p>
+                    <div class="col-md-4">
+                        <div class="destination-card">
+                            <div class="destination-card__img">
+                                <img src="https://images.unsplash.com/photo-1661345441183-d3d10b1f4e97?auto=format&fit=crop&w=800&q=80" alt="Norveç Fiyortları">
+                                <span class="destination-card__badge">NO · 08</span>
+                            </div>
+                            <div class="destination-card__info">
+                                <h3>Norveç Fiyortları</h3>
+                                <p>10 gün · Orta</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="destination-card">
-                        <div class="destination-card__img">
-                            <img src="https://images.unsplash.com/photo-1529476488885-3159d45ab78b?auto=format&fit=crop&w=800&q=80" alt="İnka Yolu">
-                            <span class="destination-card__badge">PE · 13</span>
-                        </div>
-                        <div class="destination-card__info">
-                            <h3>İnka Yolu</h3>
-                            <p>5 gün · Zorlu</p>
+                    <div class="col-md-4">
+                        <div class="destination-card">
+                            <div class="destination-card__img">
+                                <img src="https://images.unsplash.com/photo-1529476488885-3159d45ab78b?auto=format&fit=crop&w=800&q=80" alt="İnka Yolu">
+                                <span class="destination-card__badge">PE · 13</span>
+                            </div>
+                            <div class="destination-card__info">
+                                <h3>İnka Yolu</h3>
+                                <p>5 gün · Zorlu</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="destination-card">
-                        <div class="destination-card__img">
-                            <img src="https://images.unsplash.com/photo-1695787841714-bc5acb2b23c5?auto=format&fit=crop&w=800&q=80" alt="Serengeti Safarisi">
-                            <span class="destination-card__badge">TZ · 15</span>
-                        </div>
-                        <div class="destination-card__info">
-                            <h3>Serengeti Safarisi</h3>
-                            <p>6 gün · Orta</p>
+                    <div class="col-md-4">
+                        <div class="destination-card">
+                            <div class="destination-card__img">
+                                <img src="https://images.unsplash.com/photo-1695787841714-bc5acb2b23c5?auto=format&fit=crop&w=800&q=80" alt="Serengeti Safarisi">
+                                <span class="destination-card__badge">TZ · 15</span>
+                            </div>
+                            <div class="destination-card__info">
+                                <h3>Serengeti Safarisi</h3>
+                                <p>6 gün · Orta</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </section>
     </main>
 
@@ -274,5 +395,8 @@
             </div>
         </div>
     </footer>
+
+    <!-- arama çubuğu js dosyamız -->
+    <script src="javascript/arama-cubugu.js"></script>
 </body>
 </html>
