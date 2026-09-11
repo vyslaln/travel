@@ -30,10 +30,10 @@
     <!-- Bootstrap JS Bundle CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Google Fonts  -->
+    <!-- Google Fonts - Nunito Sans eklendi, Oswald yerine kullanılıyor (daha ferah, yuvarlak bir font) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Rubik:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Rubik:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- External CSS Files -->
     <link rel="stylesheet" href="css/style.css">
@@ -73,193 +73,281 @@
         </nav>
     </header>
 
-    <!-- hero  -->
     <main>
-    <section class="destinations">
-        <div class="container">
 
-            <!-- filter bar -->
-             <div class="filter-bar">
-                <div class="filter-field">
-                    <label for="filter-region">Bölge</label>
-                    <select id="filter-region" class="form-select">
-                        <option value="all">Tümü</option>
-                        <option value="avrupa">Avrupa</option>
-                        <option value="iskandinav">İskandinav Ülkeleri</option>
-                        <option value="asya">Asya</option>
-                        <option value="afrika">Afrika</option>
-                        <option value="amerika">Amerika</option>
-                    </select>
-                </div>
+        <!-- Arama çubuğu bölümü, fon fotoğrafı üzerine gradient kart olarak oturuyor -->
+        <section class="search-hero">
+            <!-- Fotoğrafın üzerine hafif karartma koyup, kartı ortalıyoruz -->
+            <div class="search-hero__overlay">
+                <div class="container">
+                    <div class="travel-search-card">
+                        <div class="row g-3">
 
-                <div class="filter-field">
-                    <label for="filter-difficulty">Zorluk</label>
-                    <select class="form-select" id="filter-difficulty">
-                        <option value="all">Tümü</option>
-                        <option value="kolay">Kolay</option>
-                        <option value="orta">Orta</option>
-                        <option value="zor">Zor</option>
-                    </select>
-                </div>
+                            <!-- Nereden alanı -->
+                            <div class="col-md-6">
+                                <label>Nereden</label>
+                                <input type="text" id="searchFrom" class="form-control" placeholder="Şehir, Bölge veya Havalimanı">
+                            </div>
 
-                <div class="filter-field">
-                    <label for="filter-days">Süre</label>
-                    <select class="form-select" id="filter-days">
-                        <option value="all">Tümü</option>
-                        <option value="short">1-5 Gün</option>
-                        <option value="medium">6-10 Gün</option>
-                        <option value="long">+11 Gün</option>
-                    </select>
-                </div>
-            </div>
+                            <!-- Nereye alanı -->
+                            <div class="col-md-6">
+                                <label>Nereye</label>
+                                <input type="text" id="searchTo" class="form-control" placeholder="Şehir, Bölge veya Havalimanı">
+                            </div>
 
-            <div class="row g-4">
+                            <!-- Yolcu alanı, tıklanınca altında bir panel açılacak -->
+                            <div class="col-md-3 passenger-wrapper">
+                                <label>Yolcu</label>
+                                <!-- Kullanıcı buraya tıklayınca panel açılıp kapanacak -->
+                                <div id="passengerDisplay" class="form-control passenger-display">1 Yetişkin, 0 Çocuk, 1 Oda</div>
 
-                <div class="col-md-4">
-                    <div class="destination-card" data-region="avrupa" data-difficulty="zor" data-days="7">
-                        <div class="destination-card__img">
-                            <img src="https://images.unsplash.com/photo-1613713569041-60a40cf006d0?auto=format&fit=crop&w=800&q=80" alt="Kaçkar Geçidi">
-                            <span class="destination-card__badge">TR · 04</span>
-                        </div>
-                        <div class="destination-card__info">
-                            <h3>Kaçkar Geçidi</h3>
-                            <p>7 gün · Zorlu</p>
-                        </div>
-                    </div>
-                </div>
+                                <!-- Yolcu seçim paneli, başta gizli, JS ile açılacak -->
+                                <div id="passengerPanel" class="passenger-panel">
 
-                <div class="col-md-4">
-                    <div class="destination-card" data-region="amerika" data-difficulty="zor" data-days="12">
-                        <div class="destination-card__img">
-                            <img src="https://images.unsplash.com/photo-1616799268833-6425aa9ea399?auto=format&fit=crop&w=800&q=80" alt="And Yaylaları">
-                            <span class="destination-card__badge">PE · 11</span>
-                        </div>
-                        <div class="destination-card__info">
-                            <h3>And Yaylaları</h3>
-                            <p>12 gün · Zorlu</p>
-                        </div>
-                    </div>
-                </div>
+                                    <!-- Yetişkin sayacı -->
+                                    <div class="passenger-row">
+                                        <span>Yetişkin</span>
+                                        <div class="passenger-counter">
+                                            <button type="button" id="adultMinusBtn">-</button>
+                                            <span id="adultCountText">1</span>
+                                            <button type="button" id="adultPlusBtn">+</button>
+                                        </div>
+                                    </div>
 
-                <div class="col-md-4">
-                    <div class="destination-card" data-region="avrupa" data-difficulty="kolay" data-days="3">
-                        <div class="destination-card__img">
-                            <img src="https://images.unsplash.com/photo-1695589593603-129adfecac13?auto=format&fit=crop&w=800&q=80" alt="Pamukkale Terasları">
-                            <span class="destination-card__badge">TR · 06</span>
-                        </div>
-                        <div class="destination-card__info">
-                            <h3>Pamukkale Travertenleri</h3>
-                            <p>3 gün · Kolay</p>
-                        </div>
-                    </div>
-                </div>
+                                    <!-- Çocuk sayacı -->
+                                    <div class="passenger-row">
+                                        <span>Çocuk</span>
+                                        <div class="passenger-counter">
+                                            <button type="button" id="childMinusBtn">-</button>
+                                            <span id="childCountText">0</span>
+                                            <button type="button" id="childPlusBtn">+</button>
+                                        </div>
+                                    </div>
 
-                <div class="col-md-4">
-                    <div class="destination-card" data-region="iskandinav" data-difficulty="orta" data-days="10">
-                        <div class="destination-card__img">
-                            <img src="https://images.unsplash.com/photo-1661345441183-d3d10b1f4e97?auto=format&fit=crop&w=800&q=80" alt="Norveç Fiyortları">
-                            <span class="destination-card__badge">NO · 08</span>
-                        </div>
-                        <div class="destination-card__info">
-                            <h3>Norveç Fiyortları</h3>
-                            <p>10 gün · Orta</p>
-                        </div>
-                    </div>
-                </div>
+                                    <!-- Oda sayacı -->
+                                    <div class="passenger-row">
+                                        <span>Oda</span>
+                                        <div class="passenger-counter">
+                                            <button type="button" id="roomMinusBtn">-</button>
+                                            <span id="roomCountText">1</span>
+                                            <button type="button" id="roomPlusBtn">+</button>
+                                        </div>
+                                    </div>
 
-                <div class="col-md-4">
-                    <div class="destination-card" data-region="amerika" data-difficulty="zor" data-days="5">
-                        <div class="destination-card__img">
-                            <img src="https://images.unsplash.com/photo-1529476488885-3159d45ab78b?auto=format&fit=crop&w=800&q=80" alt="İnka Yolu">
-                            <span class="destination-card__badge">PE · 13</span>
-                        </div>
-                        <div class="destination-card__info">
-                            <h3>İnka Yolu</h3>
-                            <p>5 gün · Zorlu</p>
-                        </div>
-                    </div>
-                </div>
+                                    <!-- Paneli kapatmak için buton -->
+                                    <button type="button" id="passengerOkBtn" class="passenger-ok-btn">Tamam</button>
+                                </div>
+                            </div>
 
-                <div class="col-md-4">
-                    <div class="destination-card" data-region="afrika" data-difficulty="orta" data-days="6">
-                        <div class="destination-card__img">
-                            <img src="https://images.unsplash.com/photo-1695787841714-bc5acb2b23c5?auto=format&fit=crop&w=800&q=80" alt="Serengeti Safarisi">
-                            <span class="destination-card__badge">TZ · 15</span>
-                        </div>
-                        <div class="destination-card__info">
-                            <h3>Serengeti Safarisi</h3>
-                            <p>6 gün · Orta</p>
-                        </div>
-                    </div>
-                </div>
+                            <!-- Gidiş tarihi -->
+                            <div class="col-md-3">
+                                <label>Gidiş</label>
+                                <input type="date" id="searchDepart" class="form-control">
+                            </div>
 
-                <div class="col-md-4">
-                    <div class="destination-card" data-region="afrika" data-difficulty="zor" data-days="9">
-                        <div class="destination-card__img">
-                            <img src="https://images.unsplash.com/photo-1535038743996-5cc170e89591?auto=format&fit=crop&w=800&q=80" alt="Sahra Rotası">
-                            <span class="destination-card__badge">MA · 09</span>
-                        </div>
-                        <div class="destination-card__info">
-                            <h3>Sahra Rotası</h3>
-                            <p>9 gün · Zor</p>
-                        </div>
-                    </div>
-                </div>
+                            <!-- Dönüş tarihi -->
+                            <div class="col-md-3">
+                                <label>Dönüş</label>
+                                <input type="date" id="searchReturn" class="form-control">
+                            </div>
 
-                <div class="col-md-4">
-                    <div class="destination-card" data-region="iskandinav" data-difficulty="kolay" data-days="5">
-                        <div class="destination-card__img">
-                            <img src="https://images.unsplash.com/photo-1740166260052-b41e5381bcbb?auto=format&fit=crop&w=800&q=80" alt="Kuzey Ormanları">
-                            <span class="destination-card__badge">DK · 05</span>
-                        </div>
-                        <div class="destination-card__info">
-                            <h3>Kuzey Ormanları</h3>
-                            <p>5 gün · Kolay</p>
-                        </div>
-                    </div>
-                </div>
+                            <!-- Ara butonu -->
+                            <div class="col-md-3">
+                                <button type="button" id="searchBtn" class="btn btn-search w-100">ARA</button>
+                            </div>
 
-                <div class="col-md-4">
-                    <div class="destination-card" data-region="asya" data-difficulty="orta" data-days="8">
-                        <div class="destination-card__img">
-                            <img src="https://images.unsplash.com/photo-1571269414792-457c81cf7855?auto=format&fit=crop&w=800&q=80" alt="Ha Long Körfezi">
-                            <span class="destination-card__badge">VN · 08</span>
-                        </div>
-                        <div class="destination-card__info">
-                            <h3>Ha Long Körfezi</h3>
-                            <p>8 gün · Orta</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="destination-card" data-region="asya" data-difficulty="kolay" data-days="4">
-                        <div class="destination-card__img">
-                            <img src="https://images.unsplash.com/photo-1596340314589-bbc7f26a2d61?auto=format&fit=crop&w=800&q=80" alt="Kyoto Bambu Ormanı">
-                            <span class="destination-card__badge">JP · 04</span>
-                        </div>
-                        <div class="destination-card__info">
-                            <h3>Kyoto Bambu Ormanı</h3>
-                            <p>4 gün · Kolay</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="destination-card" data-region="amerika" data-difficulty="zor" data-days="14">
-                        <div class="destination-card__img">
-                            <img src="https://images.unsplash.com/photo-1672713543300-437d12564280?auto=format&fit=crop&w=800&q=80" alt="Patagonya Yürüyüşü">
-                            <span class="destination-card__badge">CL · 14</span>
-                        </div>
-                        <div class="destination-card__info">
-                            <h3>Patagonya Yürüyüşü</h3>
-                            <p>14 gün · Zor</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- hero  -->
+        <section class="destinations">
+            <div class="container">
+
+                <!-- filter bar -->
+                 <div class="filter-bar">
+                    <div class="filter-field">
+                        <label for="filter-region">Bölge</label>
+                        <select id="filter-region" class="form-select">
+                            <option value="all">Tümü</option>
+                            <option value="avrupa">Avrupa</option>
+                            <option value="iskandinav">İskandinav Ülkeleri</option>
+                            <option value="asya">Asya</option>
+                            <option value="afrika">Afrika</option>
+                            <option value="amerika">Amerika</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-field">
+                        <label for="filter-difficulty">Zorluk</label>
+                        <select class="form-select" id="filter-difficulty">
+                            <option value="all">Tümü</option>
+                            <option value="kolay">Kolay</option>
+                            <option value="orta">Orta</option>
+                            <option value="zor">Zor</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-field">
+                        <label for="filter-days">Süre</label>
+                        <select class="form-select" id="filter-days">
+                            <option value="all">Tümü</option>
+                            <option value="short">1-5 Gün</option>
+                            <option value="medium">6-10 Gün</option>
+                            <option value="long">+11 Gün</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+
+                    <div class="col-md-4">
+                        <div class="destination-card" data-region="avrupa" data-difficulty="zor" data-days="7">
+                            <div class="destination-card__img">
+                                <img src="https://images.unsplash.com/photo-1613713569041-60a40cf006d0?auto=format&fit=crop&w=800&q=80" alt="Kaçkar Geçidi">
+                                <span class="destination-card__badge">TR · 04</span>
+                            </div>
+                            <div class="destination-card__info">
+                                <h3>Kaçkar Geçidi</h3>
+                                <p>7 gün · Zorlu</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="destination-card" data-region="amerika" data-difficulty="zor" data-days="12">
+                            <div class="destination-card__img">
+                                <img src="https://images.unsplash.com/photo-1616799268833-6425aa9ea399?auto=format&fit=crop&w=800&q=80" alt="And Yaylaları">
+                                <span class="destination-card__badge">PE · 11</span>
+                            </div>
+                            <div class="destination-card__info">
+                                <h3>And Yaylaları</h3>
+                                <p>12 gün · Zorlu</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="destination-card" data-region="avrupa" data-difficulty="kolay" data-days="3">
+                            <div class="destination-card__img">
+                                <img src="https://images.unsplash.com/photo-1695589593603-129adfecac13?auto=format&fit=crop&w=800&q=80" alt="Pamukkale Terasları">
+                                <span class="destination-card__badge">TR · 06</span>
+                            </div>
+                            <div class="destination-card__info">
+                                <h3>Pamukkale Travertenleri</h3>
+                                <p>3 gün · Kolay</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="destination-card" data-region="iskandinav" data-difficulty="orta" data-days="10">
+                            <div class="destination-card__img">
+                                <img src="https://images.unsplash.com/photo-1661345441183-d3d10b1f4e97?auto=format&fit=crop&w=800&q=80" alt="Norveç Fiyortları">
+                                <span class="destination-card__badge">NO · 08</span>
+                            </div>
+                            <div class="destination-card__info">
+                                <h3>Norveç Fiyortları</h3>
+                                <p>10 gün · Orta</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="destination-card" data-region="amerika" data-difficulty="zor" data-days="5">
+                            <div class="destination-card__img">
+                                <img src="https://images.unsplash.com/photo-1529476488885-3159d45ab78b?auto=format&fit=crop&w=800&q=80" alt="İnka Yolu">
+                                <span class="destination-card__badge">PE · 13</span>
+                            </div>
+                            <div class="destination-card__info">
+                                <h3>İnka Yolu</h3>
+                                <p>5 gün · Zorlu</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="destination-card" data-region="afrika" data-difficulty="orta" data-days="6">
+                            <div class="destination-card__img">
+                                <img src="https://images.unsplash.com/photo-1695787841714-bc5acb2b23c5?auto=format&fit=crop&w=800&q=80" alt="Serengeti Safarisi">
+                                <span class="destination-card__badge">TZ · 15</span>
+                            </div>
+                            <div class="destination-card__info">
+                                <h3>Serengeti Safarisi</h3>
+                                <p>6 gün · Orta</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="destination-card" data-region="afrika" data-difficulty="zor" data-days="9">
+                            <div class="destination-card__img">
+                                <img src="https://images.unsplash.com/photo-1535038743996-5cc170e89591?auto=format&fit=crop&w=800&q=80" alt="Sahra Rotası">
+                                <span class="destination-card__badge">MA · 09</span>
+                            </div>
+                            <div class="destination-card__info">
+                                <h3>Sahra Rotası</h3>
+                                <p>9 gün · Zor</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="destination-card" data-region="iskandinav" data-difficulty="kolay" data-days="5">
+                            <div class="destination-card__img">
+                                <img src="https://images.unsplash.com/photo-1740166260052-b41e5381bcbb?auto=format&fit=crop&w=800&q=80" alt="Kuzey Ormanları">
+                                <span class="destination-card__badge">DK · 05</span>
+                            </div>
+                            <div class="destination-card__info">
+                                <h3>Kuzey Ormanları</h3>
+                                <p>5 gün · Kolay</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="destination-card" data-region="asya" data-difficulty="orta" data-days="8">
+                            <div class="destination-card__img">
+                                <img src="https://images.unsplash.com/photo-1571269414792-457c81cf7855?auto=format&fit=crop&w=800&q=80" alt="Ha Long Körfezi">
+                                <span class="destination-card__badge">VN · 08</span>
+                            </div>
+                            <div class="destination-card__info">
+                                <h3>Ha Long Körfezi</h3>
+                                <p>8 gün · Orta</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="destination-card" data-region="asya" data-difficulty="kolay" data-days="4">
+                            <div class="destination-card__img">
+                                <img src="https://images.unsplash.com/photo-1596340314589-bbc7f26a2d61?auto=format&fit=crop&w=800&q=80" alt="Kyoto Bambu Ormanı">
+                                <span class="destination-card__badge">JP · 04</span>
+                            </div>
+                            <div class="destination-card__info">
+                                <h3>Kyoto Bambu Ormanı</h3>
+                                <p>4 gün · Kolay</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="destination-card" data-region="amerika" data-difficulty="zor" data-days="14">
+                            <div class="destination-card__img">
+                                <img src="https://images.unsplash.com/photo-1672713543300-437d12564280?auto=format&fit=crop&w=800&q=80" alt="Patagonya Yürüyüşü">
+                                <span class="destination-card__badge">CL · 14</span>
+                            </div>
+                            <div class="destination-card__info">
+                                <h3>Patagonya Yürüyüşü</h3>
+                                <p>14 gün · Zor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
       <!-- footer -->
@@ -298,6 +386,9 @@
         </div>
     </footer>
 
+    <!-- filtreleme js dosyamız -->
     <script src="javascript/turlar.js"></script>
+    <!-- arama çubuğu js dosyamız -->
+    <script src="javascript/arama-cubugu.js"></script>
 </body>
 </html>
